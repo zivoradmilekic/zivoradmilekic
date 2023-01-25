@@ -1,0 +1,39 @@
+---
+import { getData } from "../data";
+
+// Lasyout
+import Layout from "../layouts/Layout.astro";
+
+// Components
+import Banner from "../components/Banner.astro";
+import Header from "../components/Header.astro";
+import MainContainer from "../components/MainContainer.astro";
+import Footer from "../components/Footer.astro";
+
+// Sections
+import Hero from "../sections/Hero.astro";
+import Teams from "../sections/Teams.astro";
+import Services from "../sections/Services.astro";
+import About from "../sections/About.astro";
+
+const username = import.meta.env.RESUMO_USERNAME;
+
+const { resume, theme } = await getData(username);
+
+const teams = ["Indigo", "Pixoff", "Typeqast", "Yanado"];
+---
+
+<Layout
+  title="Živorad Milekić — Full-stack developer"
+  description="Senior full-stack developer specialized in JavaScript and TypeScript codebase."
+>
+  <Banner {username} />
+  <Header />
+  <MainContainer>
+    <Hero {resume} {theme} />
+    <Teams teams={teams} />
+    <Services {resume} />
+    <About {resume} />
+  </MainContainer>
+  <Footer {username} />
+</Layout>

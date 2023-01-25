@@ -1,0 +1,26 @@
+---
+export interface Props {
+  teams: string[];
+}
+
+const { teams } = Astro.props;
+---
+
+<div class="py-16">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <p
+      class="text-center text-sm font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500"
+    >
+      Trusted by teams from around the world
+    </p>
+    <div class="mt-6 grid grid-cols-2 gap-8 sm:grid-cols-4">
+      {
+        teams.map((team) => (
+          <span class="text-center text-xl font-semibold uppercase tracking-wide dark:text-white">
+            {team}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+---
+import Card from "../components/Card.astro";
+
+const { resume } = Astro.props;
+---
+
+<div
+  class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-7xl lg:px-8 lg:pt-24"
+>
+  <h2
+    class="text-4xl font-extrabold tracking-tight dark:text-white lg:text-center lg:text-5xl xl:text-6xl"
+  >
+    Services
+  </h2>
+  {
+    /* <p class="mx-auto mt-4 text-lg font-medium text-gray-400 lg:max-w-3xl lg:text-xl lg:text-center">
+	Turborepo reimagines build system techniques used by Facebook and
+	Google to remove maintenance burden and overhead.
+	</p> */
+  }
+  <div
+    class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3"
+  >
+    {
+      resume?.services?.map(({ icon, name, description }: any) => (
+        <Card icon={icon} title={name} text={description} />
+      ))
+    }
+  </div>
+</div>

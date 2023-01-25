@@ -1,0 +1,27 @@
+---
+export interface Props {
+  username: string;
+}
+
+const { username } = Astro.props;
+---
+
+<footer class="bg-gray-100 dark:bg-white dark:bg-opacity-5">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:py-16 lg:px-8">
+    <a
+      class="inline-flex"
+      target="_blank"
+      rel="noopener noreferrer"
+      href={`https://resumo.me?utm_source=${username}&utm_medium=referral&utm_campaign=footer-logoLink`}
+    >
+      <img
+        alt="Resumo logo"
+        src="/images/resumo-logo.svg"
+        class="dark:invert"
+      />
+    </a>
+    <p class="mt-2 text-xs text-gray-500">
+      Copyright © {new Date().getFullYear()} - Resumo. All rights reserved.
+    </p>
+  </div>
+</footer>
