@@ -1,14 +1,14 @@
 import axios from "axios";
 
-export async function getData(username: string) {
-  const {
-    data: [page],
-  } = await axios.get(`https://resumo.me/wp-json/wp/v2/users?slug=${username}`);
+export async function getData(resumo_uuid: string) {
+  const { data } = await axios.get(
+    `https://api.malla.rs/api/rest/resumes/${resumo_uuid}`,
+    {
+      headers: {
+        "x-hasura-admin-secret": import.meta.env.HASURA_ADMIN_SECRET,
+      },
+    }
+  );
 
-  if (!page) return { resume: undefined, theme: undefined };
-
-  const { acf } = page;
-  const { resume, theme } = acf;
-
-  return { resume, theme };
+  return data;
 }

@@ -12,15 +12,15 @@ export const toDataURL = (url: string) =>
     });
 
 export const printCard = async (resume: any) => {
-  const { profile, contacts } = resume;
+  const { picture, name, job_title, contacts } = resume;
 
   return `
 BEGIN:VCARD
 VERSION:3.0
-FN;CHARSET=UTF-8:${profile.name}
-N;CHARSET=UTF-8:${profile.name.split(" ").reverse().join(";")}
-PHOTO;ENCODING=b;TYPE=JPEG:${await toDataURL(profile.photo.url)}
-TITLE:${profile.job_title}
+FN;CHARSET=UTF-8:${name}
+N;CHARSET=UTF-8:${name.split(" ").reverse().join(";")}
+PHOTO;ENCODING=b;TYPE=JPEG:${await toDataURL(picture)}
+TITLE:${job_title}
 TEL;WORK;VOICE:${contacts.phone_number}
 EMAIL;WORK;INTERNET:${contacts.email_address}
 URL:${contacts.web_address}

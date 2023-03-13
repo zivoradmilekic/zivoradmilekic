@@ -17,7 +17,7 @@ export const ContactModal: React.FC<any> = ({ icons, contacts }) => {
       <button
         type="button"
         onClick={openModal}
-        className="rounded-md border border-transparent border-gray-200 bg-black bg-opacity-5 px-8 py-3 font-medium text-gray-600 hover:bg-gray-200 dark:border-gray-700 dark:bg-white dark:bg-opacity-5 dark:text-gray-300 dark:hover:bg-gray-900 md:py-3 md:px-10 md:text-base md:leading-6"
+        className="rounded-md border border-gray-200 bg-black bg-opacity-5 px-8 py-3 font-medium text-gray-600 hover:bg-gray-200 dark:border-gray-700 dark:bg-white dark:bg-opacity-5 dark:text-gray-300 dark:hover:bg-gray-900 md:py-3 md:px-10 md:text-base md:leading-6"
       >
         Contact me
       </button>
@@ -76,9 +76,6 @@ export const ContactModal: React.FC<any> = ({ icons, contacts }) => {
 
                 <div className="mt-8">
                   <div className="mt-4 flex gap-4 sm:items-center">
-                    <div className="h-8 w-8 rounded-full bg-black bg-opacity-10 p-1.5 text-black dark:bg-white dark:bg-opacity-10 dark:text-white">
-                      <img alt="Phone number" src={icons.phone_number.url} />
-                    </div>
                     <div className="flex flex-col sm:w-full sm:flex-row sm:items-center sm:justify-between">
                       <h3 className="text-lg font-medium dark:text-white">
                         Phone number:
@@ -93,9 +90,6 @@ export const ContactModal: React.FC<any> = ({ icons, contacts }) => {
                   </div>
 
                   <div className="mt-4 flex gap-4 sm:items-center">
-                    <div className="h-8 w-8 rounded-full bg-black bg-opacity-10 p-1.5 text-black dark:bg-white dark:bg-opacity-10 dark:text-white">
-                      <img alt="E-mail address" src={icons.email_address.url} />
-                    </div>
                     <div className="flex flex-col sm:w-full sm:flex-row sm:items-center sm:justify-between">
                       <h3 className="text-lg font-medium dark:text-white">
                         E-mail address:
@@ -110,12 +104,6 @@ export const ContactModal: React.FC<any> = ({ icons, contacts }) => {
                   </div>
 
                   <div className="mt-4 flex gap-4 sm:items-center">
-                    <div className="h-8 w-8 rounded-full bg-black bg-opacity-10 p-1.5 text-black dark:bg-white dark:bg-opacity-10 dark:text-white">
-                      <img
-                        alt="Postal address"
-                        src={icons.postal_address.url}
-                      />
-                    </div>
                     <div className="flex flex-col sm:w-full sm:flex-row sm:items-center sm:justify-between">
                       <h3 className="text-lg font-medium dark:text-white">
                         Postal address:

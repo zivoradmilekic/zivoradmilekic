@@ -12,7 +12,7 @@
 
 @layer components {
   .about-you-content p {
-    @apply mb-6 text-lg leading-normal text-current;
+    @apply text-lg leading-normal text-current;
   }
 
   .about-you-content strong {

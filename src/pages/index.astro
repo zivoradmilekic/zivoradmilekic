@@ -16,9 +16,9 @@ import Teams from "../sections/Teams.astro";
 import Services from "../sections/Services.astro";
 import About from "../sections/About.astro";
 
-const username = import.meta.env.RESUMO_USERNAME;
+const resume_uuid = import.meta.env.RESUME_UUID;
 
-const { resume, theme } = await getData(username);
+const { resume } = await getData(resume_uuid);
 
 const teams = ["Indigo", "Pixoff", "Typeqast", "Yanado"];
 ---
@@ -27,13 +27,13 @@ const teams = ["Indigo", "Pixoff", "Typeqast", "Yanado"];
   title="Živorad Milekić — Full-stack developer"
   description="Senior full-stack developer specialized in JavaScript and TypeScript codebase."
 >
-  <Banner {username} />
+  <Banner />
   <Header />
   <MainContainer>
-    <Hero {resume} {theme} />
+    <Hero {resume} />
     <Teams teams={teams} />
     <Services {resume} />
     <About {resume} />
   </MainContainer>
-  <Footer {username} />
+  <Footer />
 </Layout>

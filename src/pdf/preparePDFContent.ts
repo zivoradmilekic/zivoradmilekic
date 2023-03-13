@@ -1,67 +1,74 @@
 import sharp from "sharp";
 import axios from "axios";
 
+type Profile = { name: string; job_title: string };
+
 export const prepareStyle = (primaryColor: string, secondaryColor: string) => {
   return {
-    h1: {
-      fontSize: 30,
-      marginTop: 20,
-      color: primaryColor,
-      bold: true,
+    styles: {
+      h1: {
+        fontSize: 30,
+        marginTop: 20,
+        color: primaryColor,
+        bold: true,
+      },
+      h2: {
+        fontSize: 20,
+        marginBottom: 20,
+        bold: true,
+      },
+      h3: {
+        fontSize: 15,
+        marginBottom: 10,
+        marginTop: 10,
+        color: secondaryColor,
+        bold: true,
+      },
+      h4: {
+        fontSize: 15,
+        marginBottom: 5,
+        bold: true,
+      },
+      h5: {
+        fontSize: 15,
+        marginBottom: 10,
+      },
+      p: {
+        fontSize: 14,
+        marginBottom: 20,
+        alignment: "left",
+        color: "#6b7280",
+      },
+      li: {
+        fontSize: 12,
+        lineHeight: 1.5,
+        marginBottom: 20,
+        alignment: "left",
+        color: "#6b7280",
+      },
+      date: {
+        fontSize: 12,
+        marginBottom: 5,
+        color: "#6b7280",
+      },
+      link: {
+        decoration: "underline",
+      },
     },
-    h2: {
-      fontSize: 20,
-      marginBottom: 20,
-      bold: true,
-    },
-    h3: {
-      fontSize: 15,
-      marginBottom: 10,
-      marginTop: 10,
-      color: secondaryColor,
-      bold: true,
-    },
-    h4: {
-      fontSize: 15,
-      marginBottom: 5,
-      bold: true,
-    },
-    h5: {
-      fontSize: 15,
-      marginBottom: 10,
-    },
-    p: {
-      fontSize: 14,
-      marginBottom: 20,
-      alignment: "left",
-      color: "#6b7280",
-    },
-    li: {
-      fontSize: 12,
-      lineHeight: 1.5,
-      marginBottom: 20,
-      alignment: "left",
-      color: "#6b7280",
-    },
-    date: {
-      fontSize: 12,
-      marginBottom: 5,
-      color: "#6b7280",
-    },
-    link: {
-      decoration: "underline",
+    defaultStyle: {
+      font: "Inter",
     },
   };
 };
 
-export const prepareInfo = (profile: { name: string; job_title: string }) => {
+export const prepareInfo = ({ name, job_title }: Profile) => {
   return {
-    title: `Resume — ${profile.name}`,
-    author: profile.name,
+    title: `Resume — ${name}`,
+    author: name,
     subject: "Resume",
     creator: "Resumo",
     producer: "Resumo",
-    keywords: `${profile.job_title}, Resume, Resumo`,
+    keywords: `${job_title}, Resume, Resumo`,
   };
 };
 
@@ -79,17 +86,20 @@ const displayFooter = () => {
   ];
 };
 
-const displayProfile = (profile: { name: string; job_title: string }) => {
+const displayProfile = ({ name, job_title }: Profile) => {
   return [
-    { text: profile.name, style: "h1" },
-    { text: profile.job_title, style: "h2" },
+    { text: name, style: "h1" },
+    { text: job_title, style: "h2" },
   ];
 };
 
-const displayAboutYou = (about_you: string) => {
+const displayDescription = (description: string) => {
   return [
     {
-      text: about_you.replace(/<[a-z]+>/g, "").replace(/<\/[a-z]+>/g, "\n"),
+      text: description
+        .replace(/<[a-z]+>/g, "")
+        .replace(/<\/[a-z]+>/g, "\n")
+        .replace(/<br\/>/g, "\n"),
       style: "p",
     },
   ];
@@ -266,10 +276,12 @@ export const toDataURL = (url: string) =>
           };
         });
 
-export const preparePDFContent = async (resume: any, theme: any) => {
+export const preparePDFContent = async (resume: any) => {
   const {
-    profile,
-    about_you,
+    picture,
+    name,
+    job_title,
+    description,
     services,
     projects,
     experience,
@@ -279,7 +291,7 @@ export const preparePDFContent = async (resume: any, theme: any) => {
     contacts,
   } = resume;
 
-  const profilePicture = await toDataURL(profile.photo?.sizes?.medium);
+  const profilePicture = await toDataURL(picture);
 
   return {
     footer: displayFooter(),
@@ -293,13 +305,13 @@ export const preparePDFContent = async (resume: any, theme: any) => {
           },
           {
             width: "*",
-            stack: [displayProfile(profile)],
+            stack: [displayProfile({ name, job_title })],
           },
         ],
         columnGap: 15,
       },
       {
-        stack: [displayAboutYou(about_you), displayProjects(projects)],
+        stack: [displayDescription(description), displayProjects(projects)],
       },
       {
         columns: [

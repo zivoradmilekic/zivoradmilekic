@@ -5,9 +5,9 @@ import { printCard } from "../../pdf/printCard";
 
 export const get: APIRoute = async function get() {
   try {
-    const username = import.meta.env.RESUMO_USERNAME;
+    const resume_uuid = import.meta.env.RESUME_UUID;
 
-    const { resume } = await getData(username);
+    const { resume } = await getData(resume_uuid);
 
     const cardFile: any = await printCard(resume);
 

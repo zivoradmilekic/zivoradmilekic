@@ -1,5 +1,5 @@
 import pdfMakePrinter from "pdfmake/src/printer";
-import fontDescriptors from "../fonts/Inter";
+import fontDescriptors from "../fonts";
 
 import {
   preparePDFContent,
@@ -30,17 +30,15 @@ export const createPdfBinary = (pdfDoc: any) => {
   });
 };
 
-export const printResume = async (resume: any, theme: any): Promise<any> => {
-  const info = prepareInfo(resume.profile);
-  const styles = prepareStyle("#0E15E1", "#13D7DE");
-  const pdfContent = await preparePDFContent(resume, theme);
+export const printResume = async (resume: any): Promise<any> => {
+  const info = prepareInfo(resume);
+  const { styles, defaultStyle } = prepareStyle("#0E15E1", "#13D7DE");
+  const pdfContent = await preparePDFContent(resume);
 
   return await createPdfBinary({
     info,
     ...pdfContent,
     styles,
-    defaultStyle: {
-      font: "Inter",
-    },
+    defaultStyle,
   });
 };

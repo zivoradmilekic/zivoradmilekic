@@ -5,11 +5,11 @@ import { printResume } from "../../pdf/printResume";
 
 export const get: APIRoute = async function get() {
   try {
-    const username = import.meta.env.RESUMO_USERNAME;
+    const resume_uuid = import.meta.env.RESUME_UUID;
 
-    const { resume, theme } = await getData(username);
+    const { resume } = await getData(resume_uuid);
 
-    const resumeFile: any = await printResume(resume, theme[theme.theme_name]);
+    const resumeFile: any = await printResume(resume);
 
     return { body: resumeFile.toString("binary"), encoding: "binary" };
   } catch (error: unknown) {
