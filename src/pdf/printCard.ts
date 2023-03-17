@@ -3,8 +3,6 @@ import axios from "axios";
 export const toDataURL = (url: string) =>
   axios({ url, responseType: "arraybuffer" })
     .then(({ data }: any) => {
-      console.log({ data });
-
       return data;
     })
     .then(async (buffer) => {

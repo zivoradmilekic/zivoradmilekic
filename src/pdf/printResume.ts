@@ -2,10 +2,10 @@ import pdfMakePrinter from "pdfmake/src/printer";
 import fontDescriptors from "../fonts";
 
 import {
-  preparePDFContent,
+  prepareContent,
   prepareStyle,
   prepareInfo,
-} from "./preparePDFContent";
+} from "./valcon/prepareContent";
 
 export const createPdfBinary = (pdfDoc: any) => {
   return new Promise((resolve, reject) => {
@@ -33,7 +33,7 @@ export const createPdfBinary = (pdfDoc: any) => {
 export const printResume = async (resume: any): Promise<any> => {
   const info = prepareInfo(resume);
   const { styles, defaultStyle } = prepareStyle("#0E15E1", "#13D7DE");
-  const pdfContent = await preparePDFContent(resume);
+  const pdfContent = await prepareContent(resume);
 
   return await createPdfBinary({
     info,

@@ -276,7 +276,7 @@ export const toDataURL = (url: string) =>
           };
         });
 
-export const preparePDFContent = async (resume: any) => {
+export const prepareContent = async (resume: any) => {
   const {
     picture,
     name,
