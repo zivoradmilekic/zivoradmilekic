@@ -20,12 +20,12 @@ const resume_uuid = import.meta.env.RESUME_UUID;
 
 const { resume } = await getData(resume_uuid);
 
-const teams = ["Indigo", "Pixoff", "Typeqast", "Yanado"];
+const teams = ["Indigo", "Pixoff", "Projectis", "Typeqast", "Valcon", "Yanado"];
 ---
 
 <Layout
-  title="Živorad Milekić — Full-stack developer"
-  description="Senior full-stack developer specialized in JavaScript and TypeScript codebase."
+  title={`${resume.name} — ${resume.job_title}`}
+  description={resume.short_description}
 >
   <Banner />
   <Header />

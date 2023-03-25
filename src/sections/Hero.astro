@@ -32,7 +32,13 @@ const { resume } = Astro.props;
       >
         Download resume
       </a>
-      <ContactModal client:visible contacts={resume.contacts} />
+      <ContactModal
+        client:visible
+        picture={resume.picture}
+        name={resume.name}
+        job_title={resume.job_title}
+        contacts={resume.contacts}
+      />
     </div>
   </div>
 </div>

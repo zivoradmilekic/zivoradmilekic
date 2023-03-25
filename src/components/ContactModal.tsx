@@ -1,7 +1,12 @@
 import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-export const ContactModal: React.FC<any> = ({ icons, contacts }) => {
+export const ContactModal: React.FC<any> = ({
+  picture,
+  name,
+  job_title,
+  contacts,
+}) => {
   let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
@@ -61,16 +66,16 @@ export const ContactModal: React.FC<any> = ({ icons, contacts }) => {
                 <div className="flex flex-col items-center">
                   <img
                     alt="Živorad Milekić headshot"
-                    src="/images/zm-headshot.jpg"
+                    src={picture}
                     decoding="async"
                     data-nimg="intrinsic"
                     className="block h-48 w-48 rounded-full border-2 border-gray-500"
                   />
                   <h2 className="mt-4 text-2xl font-bold dark:text-white">
-                    Živorad Milekić
+                    {name}
                   </h2>
                   <p className="mt-2 text-lg font-medium text-gray-500 dark:text-gray-400">
-                    Full-stack devoloper
+                    {job_title}
                   </p>
                 </div>
 
