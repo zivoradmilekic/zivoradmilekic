@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { Analytics } from "@vercel/analytics/react";
 
 export const ContactModal: React.FC<any> = ({
   picture,
@@ -19,6 +20,7 @@ export const ContactModal: React.FC<any> = ({
 
   return (
     <>
+      <Analytics />
       <button
         type="button"
         onClick={openModal}
