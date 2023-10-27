@@ -3,7 +3,7 @@ import type { APIRoute } from "astro";
 import { getData } from "../../data";
 import { printCard } from "../../pdf/printCard";
 
-export const get: APIRoute = async function get() {
+export const GET: APIRoute = async function get() {
   try {
     const resume_uuid = import.meta.env.RESUME_UUID;
 
