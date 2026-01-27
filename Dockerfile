@@ -11,6 +11,11 @@ RUN yarn install --frozen-lockfile
 # Copy source files
 COPY . .
 
+ARG RESUME_UUID
+ENV RESUME_UUID=$RESUME_UUID
+ARG HASURA_ADMIN_SECRET
+ENV HASURA_ADMIN_SECRET=$HASURA_ADMIN_SECRET
+
 # Build the static site
 RUN yarn build
 
