@@ -14,7 +14,7 @@ export const GET: APIRoute = async function get() {
     });
   } catch (error: unknown) {
     return new Response(
-      `Something went wrong in pdf-resource.pdf route!: ${error as string}`,
+      `Something went wrong in data.json route!: ${error as string}`,
       {
         status: 501,
         statusText: "Server error",

@@ -12,7 +12,7 @@ export const toDataURL = (url: string) =>
     });
 
 export const printCard = async (resume: any) => {
-  const { picture, name, job_title, contacts } = resume;
+  const { picture, name, jobTitle, contacts } = resume;
 
   return `
 BEGIN:VCARD
@@ -20,10 +20,10 @@ VERSION:3.0
 FN;CHARSET=UTF-8:${name}
 N;CHARSET=UTF-8:${name.split(" ").reverse().join(";")}
 PHOTO;ENCODING=b;TYPE=JPEG:${await toDataURL(picture)}
-TITLE:${job_title}
-TEL;WORK;VOICE:${contacts.phone_number}
-EMAIL;WORK;INTERNET:${contacts.email_address}
-URL:${contacts.web_address}
+TITLE:${jobTitle}
+TEL;WORK;VOICE:${contacts.phoneNumber}
+EMAIL;WORK;INTERNET:${contacts.emailAddress}
+URL:${contacts.webAddress}
 END:VCARD
   `;
 };

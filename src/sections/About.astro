@@ -9,13 +9,13 @@ const { resume } = Astro.props;
     Get to know me better
   </h2>
   <div
-    class="about-you-content mx-auto max-w-2xl dark:text-gray-400 lg:mt-2"
+    class="about-you-content mx-auto max-w-2xl dark:text-gray-400 lg:mt-2 flex flex-col gap-3"
     set:html={resume.description}
   />
   <div class="mx-auto flex max-w-2xl items-center space-x-4 py-4 mt-6">
     <div>
       <img
-        alt="Živorad Milekić headshot"
+        alt={`${resume.personName} headshot`}
         src={resume.picture}
         decoding="async"
         data-nimg="intrinsic"
@@ -25,7 +25,7 @@ const { resume } = Astro.props;
     <div class="flex h-full flex-col space-y-3">
       <div>
         <img
-          alt="Živorad Milekić signature"
+          alt={`${resume.personName} signature`}
           src="/images/zm-signature.svg"
           decoding="async"
           data-nimg="intrinsic"
@@ -33,8 +33,8 @@ const { resume } = Astro.props;
         />
       </div>
       <div class="items-center sm:inline-flex sm:gap-2">
-        <p class="font-bold text-gray-400 no-underline">{resume.name}</p>
-        <p class="text-gray-500">{resume.job_title}</p>
+        <p class="font-bold text-gray-400 no-underline">{resume.personName}</p>
+        <p class="text-gray-500">{resume.jobTitle}</p>
       </div>
     </div>
   </div>

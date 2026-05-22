@@ -14,13 +14,13 @@ const { resume } = Astro.props;
       <span
         class="bg-linear-to-r from-primary to-secondary bg-clip-text text-5xl text-transparent sm:text-7xl lg:text-8xl xl:text-8xl"
       >
-        {resume.name}
+        {resume.personName}
       </span>
     </h1>
     <p
       class="mx-auto mt-6 max-w-lg text-center text-xl font-medium leading-tight text-gray-400 sm:max-w-3xl sm:text-2xl md:text-3xl lg:text-4xl"
     >
-      {resume.short_description}
+      {resume.shortDescription}
     </p>
     <div
       class="mx-auto mt-10 flex max-w-xl flex-col justify-center gap-3 sm:flex-row"
@@ -35,8 +35,8 @@ const { resume } = Astro.props;
       <ContactModal
         client:visible
         picture={resume.picture}
-        name={resume.name}
-        job_title={resume.job_title}
+        name={resume.personName}
+        jobTitle={resume.jobTitle}
         contacts={resume.contacts}
       />
     </div>

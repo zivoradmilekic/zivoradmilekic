@@ -2,12 +2,12 @@ import axios from "axios";
 
 export async function getData(resumo_uuid: string) {
   const { data } = await axios.get(
-    `https://api.resumo.me/api/rest/resumes/${resumo_uuid}`,
+    `${import.meta.env.RESUME_API_URL}/api/resumes/${resumo_uuid}`,
     {
       headers: {
-        "x-hasura-admin-secret": import.meta.env.HASURA_ADMIN_SECRET,
+        "x-api-key": import.meta.env.RESUME_API_KEY,
       },
-    }
+    },
   );
 
   return data;

@@ -7,22 +7,22 @@ import {
 } from "@headlessui/react";
 
 interface Contacts {
-  phone_number: string;
-  email_address: string;
-  postal_address: string;
+  phoneNumber: string;
+  emailAddress: string;
+  postalAddress: string;
 }
 
 interface ContactModalProps {
   picture: string;
   name: string;
-  job_title: string;
+  jobTitle: string;
   contacts: Contacts;
 }
 
 export const ContactModal: React.FC<ContactModalProps> = ({
   picture,
   name,
-  job_title,
+  jobTitle,
   contacts,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,7 +70,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 {name}
               </DialogTitle>
               <p className="mt-2 text-lg font-medium text-gray-500 dark:text-gray-400">
-                {job_title}
+                {jobTitle}
               </p>
             </div>
 
@@ -82,9 +82,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   </h3>
                   <a
                     className="text-base font-medium text-gray-500 dark:text-gray-400"
-                    href={`tel:${contacts.phone_number}`}
+                    href={`tel:${contacts.phoneNumber}`}
                   >
-                    {contacts.phone_number}
+                    {contacts.phoneNumber}
                   </a>
                 </div>
               </div>
@@ -96,9 +96,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   </h3>
                   <a
                     className="text-base font-medium text-gray-500 dark:text-gray-400"
-                    href={`mailto:${contacts.email_address}`}
+                    href={`mailto:${contacts.emailAddress}`}
                   >
-                    {contacts.email_address}
+                    {contacts.emailAddress}
                   </a>
                 </div>
               </div>
@@ -109,7 +109,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     Postal address:
                   </h3>
                   <p className="text-base font-medium text-gray-500 dark:text-gray-400">
-                    {contacts.postal_address}
+                    {contacts.postalAddress}
                   </p>
                 </div>
               </div>

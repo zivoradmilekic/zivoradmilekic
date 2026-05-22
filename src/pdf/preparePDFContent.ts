@@ -1,7 +1,7 @@
 import sharp from "sharp";
 import axios from "axios";
 
-type Profile = { name: string; job_title: string };
+type Profile = { personName: string; jobTitle: string };
 
 export const prepareStyle = (primaryColor: string, secondaryColor: string) => {
   return {
@@ -61,14 +61,14 @@ export const prepareStyle = (primaryColor: string, secondaryColor: string) => {
   };
 };
 
-export const prepareInfo = ({ name, job_title }: Profile) => {
+export const prepareInfo = ({ personName, jobTitle }: Profile) => {
   return {
-    title: `Resume — ${name}`,
-    author: name,
+    title: `Resume — ${personName}`,
+    author: personName,
     subject: "Resume",
     creator: "Resumo",
     producer: "Resumo",
-    keywords: `${job_title}, Resume, Resumo`,
+    keywords: `${jobTitle}, Resume, Resumo`,
   };
 };
 
@@ -86,10 +86,10 @@ const displayFooter = () => {
   ];
 };
 
-const displayProfile = ({ name, job_title }: Profile) => {
+const displayProfile = ({ personName, jobTitle }: Profile) => {
   return [
-    { text: name, style: "h1" },
-    { text: job_title, style: "h2" },
+    { text: personName, style: "h1" },
+    { text: jobTitle, style: "h2" },
   ];
 };
 
@@ -108,11 +108,11 @@ const displayDescription = (description: string) => {
 const displayProjects = (
   projects: {
     project: string;
-    job_title: string;
-    start_date: string;
-    end_date: string;
+    jobTitle: string;
+    startDate: string;
+    endDate: string;
     description: string;
-  }[]
+  }[],
 ) => {
   if (projects?.length)
     return [
@@ -120,9 +120,9 @@ const displayProjects = (
       projects.map((project) => {
         return [
           { text: project.project, style: ["h4"] },
-          { text: project.job_title, style: ["h5"] },
+          { text: project.jobTitle, style: ["h5"] },
           {
-            text: displayDate(project.start_date, project.end_date),
+            text: displayDate(project.startDate, project.endDate),
             style: ["date"],
           },
           {
@@ -136,20 +136,20 @@ const displayProjects = (
 
 const displayExperience = (
   experience: {
-    job_title: string;
+    jobTitle: string;
     company: string;
-    start_date: string;
-    end_date: string;
+    startDate: string;
+    endDate: string;
     description: string;
-  }[]
+  }[],
 ) => {
   if (experience?.length)
     return [
       { text: "EXPERIENCE", style: "h3" },
       experience.map((exp) => {
         return [
-          { text: exp.job_title + " - " + exp.company, style: ["h4"] },
-          { text: displayDate(exp.start_date, exp.end_date), style: ["date"] },
+          { text: exp.jobTitle + " - " + exp.company, style: ["h4"] },
+          { text: displayDate(exp.startDate, exp.endDate), style: ["date"] },
           { text: exp.description, style: ["p"] },
         ];
       }),
@@ -159,10 +159,10 @@ const displayExperience = (
 const displayEducation = (
   education: {
     degree: string;
-    start_date: string;
-    end_date: string;
+    startDate: string;
+    endDate: string;
     institution: string;
-  }[]
+  }[],
 ) => {
   if (education?.length)
     return [
@@ -171,7 +171,7 @@ const displayEducation = (
         return [
           { text: education.degree, style: ["h4"] },
           {
-            text: displayDate(education.start_date, education.end_date),
+            text: displayDate(education.startDate, education.endDate),
             style: ["date"],
           },
           { text: education.institution, style: ["p"] },
@@ -205,24 +205,24 @@ const displayLanguages = (languages: { language: string }[]) => {
 };
 
 const displayContacts = (contacts: {
-  email_address: string;
-  phone_number: string;
-  postal_address: string;
+  emailAddress: string;
+  phoneNumber: string;
+  postalAddress: string;
 }) => {
   return [
     { text: "CONTACTS", style: "h3" },
     {
       ul: [
         {
-          text: contacts.email_address,
-          link: `mailto:${contacts.email_address}`,
+          text: contacts.emailAddress,
+          link: `mailto:${contacts.emailAddress}`,
         },
-        { text: contacts.phone_number, link: `tel:${contacts.phone_number}` },
+        { text: contacts.phoneNumber, link: `tel:${contacts.phoneNumber}` },
         {
-          text: contacts.postal_address,
-          link: `https://www.google.com/maps?q=${contacts.postal_address.replace(
+          text: contacts.postalAddress,
+          link: `https://www.google.com/maps?q=${contacts.postalAddress.replace(
             " ",
-            "+"
+            "+",
           )}`,
         },
       ],
@@ -233,7 +233,7 @@ const displayContacts = (contacts: {
 
 const roundImageBuffer = async (buffer: any) => {
   const roundedCorners = Buffer.from(
-    '<svg><circle cx="150" cy="150" r="150"/></svg>'
+    '<svg><circle cx="150" cy="150" r="150"/></svg>',
   );
 
   return await sharp(buffer)
@@ -279,8 +279,8 @@ export const toDataURL = (url: string) =>
 export const preparePDFContent = async (resume: any) => {
   const {
     picture,
-    name,
-    job_title,
+    personName,
+    jobTitle,
     description,
     services,
     projects,
@@ -305,7 +305,7 @@ export const preparePDFContent = async (resume: any) => {
           },
           {
             width: "*",
-            stack: [displayProfile({ name, job_title })],
+            stack: [displayProfile({ personName, jobTitle })],
           },
         ],
         columnGap: 15,
