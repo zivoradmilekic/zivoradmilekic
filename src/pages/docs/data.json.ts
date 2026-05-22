@@ -8,11 +8,10 @@ export const GET: APIRoute = async function get() {
 
     const { resume } = await getData(resume_uuid);
 
-    return {
-      body: JSON.stringify(resume),
-      encoding: "utf-8",
-      headers: { "Content-Type": "application/json" },
-    };
+    return new Response(JSON.stringify(resume), {
+      status: 200,
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+    });
   } catch (error: unknown) {
     return new Response(
       `Something went wrong in pdf-resource.pdf route!: ${error as string}`,

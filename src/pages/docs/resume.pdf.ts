@@ -11,7 +11,10 @@ export const GET: APIRoute = async function get() {
 
     const resumeFile: any = await printResume(resume);
 
-    return { body: resumeFile.toString("binary"), encoding: "binary" };
+    return new Response(resumeFile, {
+      status: 200,
+      headers: { "Content-Type": "application/pdf" },
+    });
   } catch (error: unknown) {
     return new Response(
       `Something went wrong in pdf-resource.pdf route!: ${error as string}`,

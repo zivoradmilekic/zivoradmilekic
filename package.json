@@ -11,13 +11,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^3.0.4",
-    "@astrojs/tailwind": "^5.0.2",
+    "@astrojs/react": "5.0.5",
+    "@astrojs/tailwind": "6.0.2",
     "@headlessui/react": "^1.7.17",
     "@types/node": "^20.8.9",
     "@types/react": "^18.2.33",
     "@types/react-dom": "^18.2.14",
-    "astro": "^3.4.0",
+    "astro": "6.3.7",
     "axios": "^1.6.0",
     "pdfmake": "^0.2.7",
     "react": "^18.2.0",

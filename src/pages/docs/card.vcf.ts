@@ -11,7 +11,10 @@ export const GET: APIRoute = async function get() {
 
     const cardFile: any = await printCard(resume);
 
-    return { body: cardFile, encoding: "utf-8" };
+    return new Response(cardFile, {
+      status: 200,
+      headers: { "Content-Type": "text/vcard; charset=utf-8" },
+    });
   } catch (error: unknown) {
     return new Response(
       `Something went wrong in pdf-resource.pdf route!: ${error as string}`,
